@@ -34,20 +34,18 @@
             EditSub = new Button();
             button3 = new Button();
             Searchlab = new Label();
-            SearchInput = new TextBox();
-            editSel = new TextBox();
+            textEditValue = new TextBox();
             editLabel = new Label();
-            NewInput = new TextBox();
-            NewLab = new Label();
             button4 = new Button();
             Error = new TextBox();
+            SearchInput = new TextBox();
             SuspendLayout();
             // 
             // Data
             // 
             Data.FormattingEnabled = true;
             Data.ItemHeight = 15;
-            Data.Location = new Point(259, 12);
+            Data.Location = new Point(421, 12);
             Data.Name = "Data";
             Data.Size = new Size(120, 319);
             Data.TabIndex = 0;
@@ -65,7 +63,7 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(178, 86);
+            SearchButton.Location = new Point(252, 85);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
             SearchButton.TabIndex = 2;
@@ -75,12 +73,13 @@
             // 
             // EditSub
             // 
-            EditSub.Location = new Point(69, 209);
+            EditSub.Location = new Point(122, 129);
             EditSub.Name = "EditSub";
             EditSub.Size = new Size(75, 23);
             EditSub.TabIndex = 3;
             EditSub.Text = "Edit";
             EditSub.UseVisualStyleBackColor = true;
+            EditSub.Click += EditSub_Click;
             // 
             // button3
             // 
@@ -102,19 +101,12 @@
             Searchlab.Text = "Search:";
             Searchlab.Click += label2_Click;
             // 
-            // SearchInput
-            // 
-            SearchInput.Location = new Point(54, 86);
-            SearchInput.Name = "SearchInput";
-            SearchInput.Size = new Size(118, 23);
-            SearchInput.TabIndex = 6;
-            // 
             // editSel
             // 
-            editSel.Location = new Point(54, 126);
-            editSel.Name = "editSel";
-            editSel.Size = new Size(118, 23);
-            editSel.TabIndex = 8;
+            textEditValue.Location = new Point(54, 126);
+            textEditValue.Name = "editSel";
+            textEditValue.Size = new Size(62, 23);
+            textEditValue.TabIndex = 8;
             // 
             // editLabel
             // 
@@ -126,25 +118,9 @@
             editLabel.Text = "Edit:";
             editLabel.Click += label3_Click;
             // 
-            // NewInput
-            // 
-            NewInput.Location = new Point(54, 168);
-            NewInput.Name = "NewInput";
-            NewInput.Size = new Size(118, 23);
-            NewInput.TabIndex = 10;
-            // 
-            // NewLab
-            // 
-            NewLab.AutoSize = true;
-            NewLab.Location = new Point(23, 171);
-            NewLab.Name = "NewLab";
-            NewLab.Size = new Size(34, 15);
-            NewLab.TabIndex = 9;
-            NewLab.Text = "New:";
-            // 
             // button4
             // 
-            button4.Location = new Point(282, 337);
+            button4.Location = new Point(444, 337);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 11;
@@ -160,16 +136,22 @@
             Error.TabIndex = 12;
             Error.TextChanged += textBox4_TextChanged;
             // 
+            // SearchInput
+            // 
+            SearchInput.Location = new Point(54, 86);
+            SearchInput.Name = "SearchInput";
+            SearchInput.Size = new Size(192, 23);
+            SearchInput.TabIndex = 6;
+            SearchInput.TextChanged += SearchInput_TextChanged_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 361);
+            ClientSize = new Size(553, 361);
             Controls.Add(Error);
             Controls.Add(button4);
-            Controls.Add(NewInput);
-            Controls.Add(NewLab);
-            Controls.Add(editSel);
+            Controls.Add(textEditValue);
             Controls.Add(editLabel);
             Controls.Add(SearchInput);
             Controls.Add(Searchlab);
@@ -193,12 +175,10 @@
         private Button EditSub;
         private Button button3;
         private Label Searchlab;
-        private TextBox SearchInput;
-        private TextBox editSel;
+        private TextBox textEditValue;
         private Label editLabel;
-        private TextBox NewInput;
-        private Label NewLab;
         private Button button4;
         private TextBox Error;
+        private TextBox SearchInput;
     }
 }
