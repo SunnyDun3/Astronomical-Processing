@@ -37,7 +37,6 @@
             textEditValue = new TextBox();
             editLabel = new Label();
             button4 = new Button();
-            Error = new TextBox();
             SearchInput = new TextBox();
             SuspendLayout();
             // 
@@ -45,7 +44,7 @@
             // 
             Data.FormattingEnabled = true;
             Data.ItemHeight = 15;
-            Data.Location = new Point(421, 12);
+            Data.Location = new Point(333, 12);
             Data.Name = "Data";
             Data.Size = new Size(120, 319);
             Data.TabIndex = 0;
@@ -54,9 +53,10 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 16F);
             label1.Location = new Point(54, 12);
             label1.Name = "label1";
-            label1.Size = new Size(138, 15);
+            label1.Size = new Size(248, 30);
             label1.TabIndex = 1;
             label1.Text = "Astronomical Processing";
             label1.Click += label1_Click;
@@ -73,7 +73,7 @@
             // 
             // EditSub
             // 
-            EditSub.Location = new Point(122, 129);
+            EditSub.Location = new Point(122, 125);
             EditSub.Name = "EditSub";
             EditSub.Size = new Size(75, 23);
             EditSub.TabIndex = 3;
@@ -83,7 +83,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(69, 260);
+            button3.Location = new Point(54, 173);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 4;
@@ -101,10 +101,10 @@
             Searchlab.Text = "Search:";
             Searchlab.Click += label2_Click;
             // 
-            // editSel
+            // textEditValue
             // 
             textEditValue.Location = new Point(54, 126);
-            textEditValue.Name = "editSel";
+            textEditValue.Name = "textEditValue";
             textEditValue.Size = new Size(62, 23);
             textEditValue.TabIndex = 8;
             // 
@@ -120,21 +120,13 @@
             // 
             // button4
             // 
-            button4.Location = new Point(444, 337);
+            button4.Location = new Point(356, 337);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 11;
             button4.Text = "Random ";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
-            // 
-            // Error
-            // 
-            Error.Location = new Point(54, 289);
-            Error.Name = "Error";
-            Error.Size = new Size(118, 23);
-            Error.TabIndex = 12;
-            Error.TextChanged += textBox4_TextChanged;
             // 
             // SearchInput
             // 
@@ -148,8 +140,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(553, 361);
-            Controls.Add(Error);
+            ClientSize = new Size(464, 361);
             Controls.Add(button4);
             Controls.Add(textEditValue);
             Controls.Add(editLabel);
@@ -178,7 +169,6 @@
         private TextBox textEditValue;
         private Label editLabel;
         private Button button4;
-        private TextBox Error;
         private TextBox SearchInput;
     }
 }

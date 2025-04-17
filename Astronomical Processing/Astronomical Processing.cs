@@ -169,20 +169,20 @@ namespace Astronomical_Processing
             }
             if (int.TryParse(textEditValue.Text, out int newValue))
 {
-    if (newValue < 10 || newValue > 90)
-    {
-        MessageBox.Show("Please enter a value between 10 and 90");
-        return;
-    }
+            if (newValue < 10 || newValue > 90)
+            {
+                MessageBox.Show("Please enter a value between 10 and 90");
+                return;
+            }
 
-    numbers[selectedIndex] = newValue; // Update the array
-    DisplayData(); // Refresh the display
-    Data.SelectedIndex = selectedIndex; // Keep the selection
-}
-else
-{
-    MessageBox.Show("Enter a valid number");
-}
+            numbers[selectedIndex] = newValue; // Update the array
+            DisplayData(); // Refresh the display
+            Data.SelectedIndex = selectedIndex; // Keep the selection
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid number");
+            }
         }
 
         private void textEditValue_TextChanged(object sender, EventArgs e)
