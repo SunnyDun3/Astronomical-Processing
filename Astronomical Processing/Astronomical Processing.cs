@@ -1,6 +1,6 @@
-/* Blayke Stephens, Ctrl+Alt+Del+troids, Sprint1
+/* Blayke Stephens 30067035, Ctrl+Alt+Del+troids, Sprint1
  * Date: 17/04/25
- * Version: 1.2
+ * Version: 2
  * Astronomical_Processing
  * form based Gui that stores 24 integers in a array, that comes from the local observetory.
  * edit values 
