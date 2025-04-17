@@ -134,7 +134,6 @@
             SearchInput.Name = "SearchInput";
             SearchInput.Size = new Size(192, 23);
             SearchInput.TabIndex = 6;
-            SearchInput.TextChanged += SearchInput_TextChanged_1;
             // 
             // Form1
             // 

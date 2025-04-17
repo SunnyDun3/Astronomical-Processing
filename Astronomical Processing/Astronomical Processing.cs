@@ -1,6 +1,6 @@
 /* Blayke Stephens, Ctrl+Alt+Del+troids, Sprint1
  * Date: 17/04/25
- * Version: 1.1
+ * Version: 1.2
  * Astronomical_Processing
  * form based Gui that stores 24 integers in a array, that comes from the local observetory.
  * edit values 
@@ -15,39 +15,44 @@ namespace Astronomical_Processing
         private int[] numbers = new int[24];
         // random number generator for creating data
         private Random random = new Random();
+        private readonly string placeholderText = "Enter number to search";
+        private readonly string editPlaceholderText = "";
+
         public Form1()
         {
             InitializeComponent();
+            SearchInput.Text = placeholderText;
+            SearchInput.Click += SearchInput_Click;
+            SearchInput.Leave += SearchInput_Leave;
+            textEditValue.Text = editPlaceholderText;
+            textEditValue.Click += TextEditValue_Click;
+            textEditValue.Leave += TextEditValue_Leave;
         }
 
-        // generates 24 random integers between 10 and 90 and stores them in array
         private void GenerateRandomData()
         {
             for (int i = 0; i < 24; i++)
             {
-                numbers[i] = random.Next(10, 91); // generates the random numbers
+                numbers[i] = random.Next(10, 91);
             }
-            DisplayData(); // puts numbers in UI
+            DisplayData();
         }
 
-        // Displays the current array values in the Listbox
         private void DisplayData()
         {
-            Data.Items.Clear(); // clears previous data
+            Data.Items.Clear();
             foreach (int value in numbers)
             {
-                Data.Items.Add(value); // add each number to the list box
+                Data.Items.Add(value);
             }
         }
 
-        // standard bubble sort algorithm that sorts the array in ascending order
         private void BubbleSort(int[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = 0; j < array.Length - 1 - i; j++)
                 {
-                    // swap if the current element is greater than the next
                     if (array[j] > array[j + 1])
                     {
                         int temp = array[j];
@@ -57,6 +62,7 @@ namespace Astronomical_Processing
                 }
             }
         }
+
         private int BinarySearch(int[] array, int target)
         {
             int left = 0;
@@ -81,10 +87,6 @@ namespace Astronomical_Processing
             GenerateRandomData();
             DisplayData();
         }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -93,13 +95,12 @@ namespace Astronomical_Processing
 
             if (int.TryParse(SearchInput.Text, out int target))
             {
-                // Perform binary search
                 int index = BinarySearch(numbers, target);
 
                 if (index != -1)
                 {
-                    SearchInput.Text = $"Value Found {target} ";
-                    Data.SelectedIndex = index; // Optionally highlight the value in the ListBox
+                    SearchInput.Text = $"Value Found: {target}, at Index: {index}";
+                    Data.SelectedIndex = index;
                 }
                 else
                 {
@@ -111,52 +112,18 @@ namespace Astronomical_Processing
                 SearchInput.Text = "Please enter a valid number.";
             }
         }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            BubbleSort(numbers); // calls the bubblesort algorithim
-            DisplayData(); // calls display data method
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
+            BubbleSort(numbers);
+            DisplayData();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            GenerateRandomData(); //  generates the random vlaues
-            DisplayData(); // puts the new sorted values in to list box
-        }
-
-        private void Data_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SearchInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SearchInput_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
+            GenerateRandomData();
+            DisplayData();
+         }
 
         private void EditSub_Click(object sender, EventArgs e)
         {
@@ -167,17 +134,20 @@ namespace Astronomical_Processing
                 MessageBox.Show("Please Select a value to edit from the list");
                 return;
             }
-            if (int.TryParse(textEditValue.Text, out int newValue))
-{
-            if (newValue < 10 || newValue > 90)
-            {
-                MessageBox.Show("Please enter a value between 10 and 90");
-                return;
-            }
 
-            numbers[selectedIndex] = newValue; // Update the array
-            DisplayData(); // Refresh the display
-            Data.SelectedIndex = selectedIndex; // Keep the selection
+            if (int.TryParse(textEditValue.Text, out int newValue))
+            {
+                if (newValue < 10 || newValue > 90)
+                {
+                    MessageBox.Show("Please enter a value between 10 and 90");
+                    return;
+                }
+
+                numbers[selectedIndex] = newValue;
+                DisplayData();
+                Data.SelectedIndex = selectedIndex;
+
+                textEditValue.Text = editPlaceholderText;
             }
             else
             {
@@ -185,9 +155,69 @@ namespace Astronomical_Processing
             }
         }
 
-        private void textEditValue_TextChanged(object sender, EventArgs e)
+        // Clear system-generated messages or placeholder on click
+        private void SearchInput_Click(object sender, EventArgs e)
         {
+            string currentText = SearchInput.Text;
 
+            if (currentText == placeholderText ||
+                currentText.StartsWith("Value Found:") ||
+                currentText.Contains("not found") ||
+                currentText == "Please enter a valid number.")
+            {
+                SearchInput.Clear();
+            }
         }
+
+        // Restore placeholder if left empty
+        private void SearchInput_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(SearchInput.Text))
+            {
+                SearchInput.Text = placeholderText;
+            }
+        }
+
+        private void TextEditValue_Leave(object? sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textEditValue.Text))
+            {
+                textEditValue.Text = editPlaceholderText;
+            }
+        }
+
+        private void TextEditValue_Click(object? sender, EventArgs e)
+        {
+            string currentText = textEditValue.Text;
+
+            if (currentText == placeholderText ||
+                currentText.StartsWith("Enter a valid number") ||
+                currentText.Contains("Please enter a value between 10 and 90") ||
+                currentText == "Please Select a value to edit from the list")
+            {
+                textEditValue.Clear();
+            }
+        }
+
+        #region unused
+        private void label1_Click(object sender, EventArgs e) { 
+        
+        }
+        private void label2_Click(object sender, EventArgs e) {
+        }
+        private void label3_Click(object sender, EventArgs e) { 
+        }
+        private void textBox4_TextChanged(object sender, EventArgs e) { 
+        }
+        private void Data_SelectedIndexChanged(object sender, EventArgs e) { 
+        }
+        private void SearchInput_TextChanged(object sender, EventArgs e) {
+        }
+        private void Form1_Load(object sender, EventArgs e) { 
+        }
+
+        private void textEditValue_TextChanged(object sender, EventArgs e) {
+        }
+        #endregion
     }
 }
