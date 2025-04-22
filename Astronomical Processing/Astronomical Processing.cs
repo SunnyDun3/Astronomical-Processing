@@ -7,6 +7,8 @@
  * can search for certain values
  * sort the data in ascending order
  */
+using System.Globalization;
+
 namespace Astronomical_Processing
 {
     public partial class Form1 : Form
@@ -27,6 +29,82 @@ namespace Astronomical_Processing
             textEditValue.Text = editPlaceholderText;
             textEditValue.Click += TextEditValue_Click;
             textEditValue.Leave += TextEditValue_Leave;
+        }
+
+        public static List<double> CalculateMode(List<double> numbers)
+        {
+            if (numbers == null || numbers.Count == 0)
+            {
+                throw new ArgumentException("The list cannot be null or empty");
+            }
+
+            var frequency = numbers
+                .GroupBy(n => n)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            int maxFrequency = frequency.Values.Max();
+
+            var modes = frequency
+                .Where(kvp => kvp.Value == maxFrequency)
+                .Select(kvp => kvp.Key)
+                .ToList();
+
+            return modes;
+        }
+        public static double CalculateMidExtreme(List<double> numbers)
+        {
+            if (numbers == null || numbers.Count == 0)
+            {
+                throw new ArgumentException("this list coont be Empty or null");
+            }
+            double min = double.MaxValue;
+            double max = double.MinValue;
+
+            foreach (var number in numbers)
+            {
+                if (number < min)
+                    min = number;
+                if (number > max)
+                    max = number;
+            }
+            return (min + max) / 2;
+
+        }
+        static double CalculateRange(List<double> numbers)
+        {
+            if (numbers == null || numbers.Count == 0)
+            {
+                throw new ArgumentException("This List cannot be empty or null");
+            }
+            double min = double.MaxValue;
+            double max = double.MinValue;
+
+            foreach (var number in numbers)
+            {
+                if (number < min)
+                    min = number;
+                if (number > max)
+                    max = number;
+            }
+            return max - min;
+        }
+
+        static double CalculateAverage(List<double> numbers)
+        {
+            if (numbers == null || numbers.Count == 0)
+            {
+                throw new ArgumentException("This List cannot be empty or null");
+            }
+            double average = 0;
+            foreach (var number in numbers)
+            {
+                average += number;
+            }
+            return average / numbers.Count;
+        }
+        private List<double> GetDoubleListFromNumbers()
+        {
+            return numbers.Select(n => (double)n).ToList();
         }
 
         private void GenerateRandomData()
@@ -123,7 +201,7 @@ namespace Astronomical_Processing
         {
             GenerateRandomData();
             DisplayData();
-         }
+        }
 
         private void EditSub_Click(object sender, EventArgs e)
         {
@@ -200,24 +278,83 @@ namespace Astronomical_Processing
         }
 
         #region unused
-        private void label1_Click(object sender, EventArgs e) { 
-        
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
-        private void label2_Click(object sender, EventArgs e) {
+        private void label2_Click(object sender, EventArgs e)
+        {
         }
-        private void label3_Click(object sender, EventArgs e) { 
+        private void label3_Click(object sender, EventArgs e)
+        {
         }
-        private void textBox4_TextChanged(object sender, EventArgs e) { 
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
         }
-        private void Data_SelectedIndexChanged(object sender, EventArgs e) { 
+        private void Data_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
-        private void SearchInput_TextChanged(object sender, EventArgs e) {
+        private void SearchInput_TextChanged(object sender, EventArgs e)
+        {
         }
-        private void Form1_Load(object sender, EventArgs e) { 
+        private void Form1_Load(object sender, EventArgs e)
+        {
         }
 
-        private void textEditValue_TextChanged(object sender, EventArgs e) {
+        private void textEditValue_TextChanged(object sender, EventArgs e)
+        {
         }
         #endregion
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void MidExt_Click(object sender, EventArgs e)
+        {
+            double result = CalculateMidExtreme(GetDoubleListFromNumbers());
+            textBox4.Text = result.ToString("F2");
+
+        }
+
+        private void Mode_Click(object sender, EventArgs e)
+        {
+            List<double> modeValues = CalculateMode(GetDoubleListFromNumbers());
+            string modeText = string.Join(", ", modeValues); // if multiple modes
+            textBox1.Text = $"{modeText}";
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Average_Click(object sender, EventArgs e)
+        {
+            double average = CalculateAverage(GetDoubleListFromNumbers());
+            textBox2.Text = $"{average:F2}";
+            Console.WriteLine(numbers);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void Range_Click(object sender, EventArgs e)
+        {
+            double range = CalculateRange(GetDoubleListFromNumbers());
+            textBox3.Text = $"{range:F2}";
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
