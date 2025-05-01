@@ -50,6 +50,14 @@
             Average = new Button();
             Range = new Button();
             toolTip = new ToolTip(components);
+            midextreme = new Button();
+            ave = new Button();
+            rangebut = new Button();
+            modetxt = new TextBox();
+            textBox6 = new TextBox();
+            rantext = new TextBox();
+            avetext = new TextBox();
+            SequentialSearh1 = new Button();
             SuspendLayout();
             // 
             // Data
@@ -153,7 +161,6 @@
             avtext.Name = "avtext";
             avtext.Size = new Size(62, 23);
             avtext.TabIndex = 13;
-            avtext.TextChanged += avtext_TextChanged;
             // 
             // modetext
             // 
@@ -161,7 +168,6 @@
             modetext.Name = "modetext";
             modetext.Size = new Size(124, 23);
             modetext.TabIndex = 15;
-            modetext.TextChanged += modetext_TextChanged;
             // 
             // rangetext
             // 
@@ -169,7 +175,6 @@
             rangetext.Name = "rangetext";
             rangetext.Size = new Size(62, 23);
             rangetext.TabIndex = 17;
-            rangetext.TextChanged += rangetext_TextChanged;
             // 
             // MidExtText
             // 
@@ -177,85 +182,132 @@
             MidExtText.Name = "MidExtText";
             MidExtText.Size = new Size(62, 23);
             MidExtText.TabIndex = 19;
-            MidExtText.TextChanged += MidExtText_TextChanged;
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(23, 205);
+            label5.Location = new Point(0, 0);
             label5.Name = "label5";
-            label5.Size = new Size(0, 15);
-            label5.TabIndex = 18;
+            label5.Size = new Size(100, 23);
+            label5.TabIndex = 0;
             // 
             // SequentialSearch
             // 
-            SequentialSearch.Location = new Point(70, 326);
+            SequentialSearch.Location = new Point(0, 0);
             SequentialSearch.Name = "SequentialSearch";
-            SequentialSearch.Size = new Size(141, 23);
-            SequentialSearch.TabIndex = 20;
-            SequentialSearch.Text = "Sequential Sort";
-            SequentialSearch.UseVisualStyleBackColor = true;
-            SequentialSearch.Click += SequentialSearch_Click;
+            SequentialSearch.Size = new Size(75, 23);
+            SequentialSearch.TabIndex = 0;
             // 
             // mid_Extreme
             // 
-            mid_Extreme.Location = new Point(21, 201);
+            mid_Extreme.Location = new Point(0, 0);
             mid_Extreme.Name = "mid_Extreme";
-            mid_Extreme.RightToLeft = RightToLeft.Yes;
-            mid_Extreme.Size = new Size(95, 23);
-            mid_Extreme.TabIndex = 21;
-            mid_Extreme.Text = "Mid Extreme";
-            mid_Extreme.UseVisualStyleBackColor = true;
-            mid_Extreme.Click += mid_Extreme_Click;
+            mid_Extreme.Size = new Size(75, 23);
+            mid_Extreme.TabIndex = 0;
             // 
             // mode
             // 
-            mode.Location = new Point(23, 257);
+            mode.Location = new Point(54, 229);
             mode.Name = "mode";
-            mode.RightToLeft = RightToLeft.Yes;
-            mode.Size = new Size(95, 23);
-            mode.TabIndex = 22;
+            mode.Size = new Size(75, 23);
+            mode.TabIndex = 0;
             mode.Text = "Mode";
-            mode.UseVisualStyleBackColor = true;
             mode.Click += mode_Click;
             // 
             // Average
             // 
-            Average.Location = new Point(21, 228);
+            Average.Location = new Point(0, 0);
             Average.Name = "Average";
-            Average.RightToLeft = RightToLeft.Yes;
-            Average.Size = new Size(95, 23);
-            Average.TabIndex = 23;
-            Average.Text = "Average";
-            Average.UseVisualStyleBackColor = true;
-            Average.Click += Average_Click;
+            Average.Size = new Size(75, 23);
+            Average.TabIndex = 0;
             // 
             // Range
             // 
-            Range.Location = new Point(23, 286);
+            Range.Location = new Point(0, 0);
             Range.Name = "Range";
-            Range.RightToLeft = RightToLeft.Yes;
-            Range.Size = new Size(95, 23);
-            Range.TabIndex = 24;
-            Range.Text = "Range";
-            Range.UseVisualStyleBackColor = true;
-            Range.Click += Range_Click;
+            Range.Size = new Size(75, 23);
+            Range.TabIndex = 0;
+            // 
+            // midextreme
+            // 
+            midextreme.Location = new Point(23, 258);
+            midextreme.Name = "midextreme";
+            midextreme.Size = new Size(106, 23);
+            midextreme.TabIndex = 12;
+            midextreme.Text = "Mid-Extreme";
+            midextreme.Click += midextreme_Click;
+            // 
+            // ave
+            // 
+            ave.Location = new Point(54, 287);
+            ave.Name = "ave";
+            ave.Size = new Size(75, 23);
+            ave.TabIndex = 13;
+            ave.Text = "Average";
+            ave.Click += ave_Click;
+            // 
+            // rangebut
+            // 
+            rangebut.Location = new Point(54, 316);
+            rangebut.Name = "rangebut";
+            rangebut.Size = new Size(75, 23);
+            rangebut.TabIndex = 14;
+            rangebut.Text = "Range";
+            rangebut.Click += rangebut_Click;
+            // 
+            // modetxt
+            // 
+            modetxt.Location = new Point(135, 229);
+            modetxt.Name = "modetxt";
+            modetxt.Size = new Size(100, 23);
+            modetxt.TabIndex = 15;
+            modetxt.TextChanged += modetxt_TextChanged;
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(135, 259);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(100, 23);
+            textBox6.TabIndex = 16;
+            // 
+            // rantext
+            // 
+            rantext.Location = new Point(135, 316);
+            rantext.Name = "rantext";
+            rantext.Size = new Size(100, 23);
+            rantext.TabIndex = 18;
+            rantext.TextChanged += rantext_TextChanged;
+            // 
+            // avetext
+            // 
+            avetext.Location = new Point(135, 286);
+            avetext.Name = "avetext";
+            avetext.Size = new Size(100, 23);
+            avetext.TabIndex = 17;
+            // 
+            // SequentialSearh1
+            // 
+            SequentialSearh1.Location = new Point(216, 114);
+            SequentialSearh1.Name = "SequentialSearh1";
+            SequentialSearh1.Size = new Size(111, 30);
+            SequentialSearh1.TabIndex = 19;
+            SequentialSearh1.Text = "Sequential search";
+            SequentialSearh1.UseVisualStyleBackColor = true;
+            SequentialSearh1.Click += SequentialSearh1_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(464, 361);
-            Controls.Add(Range);
-            Controls.Add(Average);
+            Controls.Add(SequentialSearh1);
+            Controls.Add(rantext);
+            Controls.Add(avetext);
+            Controls.Add(textBox6);
+            Controls.Add(modetxt);
+            Controls.Add(rangebut);
+            Controls.Add(ave);
+            Controls.Add(midextreme);
             Controls.Add(mode);
-            Controls.Add(mid_Extreme);
-            Controls.Add(SequentialSearch);
-            Controls.Add(MidExtText);
-            Controls.Add(label5);
-            Controls.Add(rangetext);
-            Controls.Add(modetext);
-            Controls.Add(avtext);
             Controls.Add(button4);
             Controls.Add(textEditValue);
             Controls.Add(editLabel);
@@ -296,5 +348,19 @@
         private Button Average;
         private Button Range;
         private ToolTip toolTip;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private Button SequentialSearh1;
+        private Button MidExt;
+        private Button Mode;
+        private Button midextreme;
+        private Button ave;
+        private Button rangebut;
+        private TextBox modetxt;
+        private TextBox textBox6;
+        private TextBox rantext;
+        private TextBox avetext;
     }
 }
