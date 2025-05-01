@@ -8,7 +8,6 @@
  * calculates modes, average, range, and mid extreme
  * sort the data in ascending order
  */
-
 namespace Astronomical_Processing
 {
     public partial class Form1 : Form
@@ -30,27 +29,6 @@ namespace Astronomical_Processing
             textEditValue.Click += TextEditValue_Click;
             textEditValue.Leave += TextEditValue_Leave;
 
-            #region ToolTips
-            toolTip.SetToolTip(SearchButton, "Perform a binary search for a number.");
-            toolTip.SetToolTip(button4, "Generate 24 random numbers between 10 and 90.");
-            toolTip.SetToolTip(button3, "Sort the numbers and perform binary search.");
-            toolTip.SetToolTip(SequentialSearch, "Perform a sequential search for a number.");
-            toolTip.SetToolTip(EditSub, "Edit the selected number in the dataset.");
-            toolTip.SetToolTip(mid_Extreme, "Calculate the average of the smallest and largest numbers.");
-            toolTip.SetToolTip(Average, "Calculate the average of all numbers.");
-            toolTip.SetToolTip(mode, "Find the most frequently occurring number(s).");
-            toolTip.SetToolTip(Range, "Calculate the difference between the highest and lowest numbers.");
-
-            toolTip.SetToolTip(SearchInput, "Enter a number to search.");
-            toolTip.SetToolTip(textEditValue, "Enter a new value between 10 and 90.");
-            toolTip.SetToolTip(MidExtText, "Displays the mid-extreme value.");
-            toolTip.SetToolTip(avtext, "Displays the average of all values.");
-            toolTip.SetToolTip(modetext, "Displays the mode(s).");
-            toolTip.SetToolTip(rangetext, "Displays the range of values.");
-            toolTip.SetToolTip(Data, "List of all numbers in the dataset.");
-            #endregion
-        }
-        #region old
         private void GenerateRandomData()
         {
             ClearOutput();
@@ -222,205 +200,25 @@ namespace Astronomical_Processing
         }
 
         #region unused
-        private void label1_Click(object sender, EventArgs e)
-        {
+        private void label1_Click(object sender, EventArgs e) { 
+        
+        }
+        private void label2_Click(object sender, EventArgs e) {
+        }
+        private void label3_Click(object sender, EventArgs e) { 
+        }
+        private void textBox4_TextChanged(object sender, EventArgs e) { 
+        }
+        private void Data_SelectedIndexChanged(object sender, EventArgs e) { 
+        }
+        private void SearchInput_TextChanged(object sender, EventArgs e) {
+        }
+        private void Form1_Load(object sender, EventArgs e) { 
+        }
 
-        }
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void Data_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-        private void SearchInput_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void textEditValue_TextChanged(object sender, EventArgs e) {
         }
         #endregion
-        private void textEditValue_TextChanged(object sender, EventArgs e)
-        {
-        }
-        #endregion
-
-        #region new 
-        public static List<double> CalculateMode(List<double> numbers)
-        {
-            if (numbers == null || numbers.Count == 0)
-            {
-                throw new ArgumentException("The list cannot be null or empty");
-            }
-
-            var frequency = numbers
-                .GroupBy(n => n)
-                .ToDictionary(g => g.Key, g => g.Count());
-
-            int maxFrequency = frequency.Values.Max();
-
-            var modes = frequency
-                .Where(kvp => kvp.Value == maxFrequency)
-                .Select(kvp => kvp.Key)
-                .ToList();
-
-            return modes;
-        }
-        static double CalculateMidExtreme(List<double> numbers)
-        {
-            if (numbers == null || numbers.Count == 0)
-            {
-                throw new ArgumentException("this list coont be Empty or null");
-            }
-            double min = double.MaxValue;
-            double max = double.MinValue;
-
-            foreach (var number in numbers)
-            {
-                if (number < min)
-                    min = number;
-                if (number > max)
-                    max = number;
-            }
-            return (min + max) / 2;
-        }
-        static double CalculateRange(List<double> numbers)
-        {
-            if (numbers == null || numbers.Count == 0)
-            {
-                throw new ArgumentException("This List cannot be empty or null");
-            }
-            double min = double.MaxValue;
-            double max = double.MinValue;
-
-            foreach (var number in numbers)
-            {
-                if (number < min)
-                    min = number;
-                if (number > max)
-                    max = number;
-            }
-            return max - min;
-        }
-
-        static double CalculateAverage(List<double> numbers)
-        {
-            if (numbers == null || numbers.Count == 0)
-            {
-                throw new ArgumentException("This List cannot be empty or null");
-            }
-            double average = 0;
-            foreach (var number in numbers)
-            {
-                average += number;
-            }
-            return average / numbers.Count;
-        }
-        private List<double> GetNumbersAsDouble()
-        {
-            return numbers.Select(n => (double)n).ToList();
-        }
-        private void ClearOutput()
-        {
-            MidExtText.Clear();
-            avtext.Clear();
-            modetext.Clear();
-            rangetext.Clear();
-        }
-
-        private void mid_Extreme_Click(object sender, EventArgs e)
-        {
-            var doubleList = GetNumbersAsDouble();
-            double result = CalculateMidExtreme(doubleList);
-            MidExtText.Text = result.ToString("F2");
-        }
-
-        private void MidExtText_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void Average_Click(object sender, EventArgs e)
-        {
-            var doubleList = GetNumbersAsDouble();
-            double result = CalculateAverage(doubleList);
-            avtext.Text = result.ToString("F2");
-        }
-
-        private void avtext_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mode_Click(object sender, EventArgs e)
-        {
-            var doubleList = GetNumbersAsDouble();
-            var modes = CalculateMode(doubleList);
-            modetext.Text = string.Join(", ", modes.Select(m => m.ToString("F2")));
-        }
-
-
-        private void modetext_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Range_Click(object sender, EventArgs e)
-        {
-            var doubleList = GetNumbersAsDouble();
-            double result = CalculateRange(doubleList);
-            rangetext.Text = result.ToString("F2");
-        }
-
-        private void rangetext_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SequentialSearch_Click(object sender, EventArgs e)
-        {
-            string currentText = SearchInput.Text;
-
-            if (currentText == placeholderText ||
-                currentText.StartsWith("Value Found:") ||
-                currentText.Contains("not found") ||
-                currentText == "Please enter a valid number.")
-            {
-                SearchInput.Clear();
-            }
-            if (string.IsNullOrWhiteSpace(SearchInput.Text))
-            {
-                SearchInput.Text = "Search input cannot be empty.";
-                return;
-            }
-
-            if (!int.TryParse(SearchInput.Text, out int searchValue))
-            {
-                SearchInput.Text =  "Enter a valid number.";
-                return;
-            }
-
-            bool found = false;
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                if (numbers[i] == searchValue)
-                {
-                    SearchInput.Text = $"Value {searchValue} found at index {i}";
-                    Data.SelectedIndex = i;
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found)
-            {
-                SearchInput.Text = $"Value {searchValue} not found.";
-            }
-        }
     }
 }
 #endregion
