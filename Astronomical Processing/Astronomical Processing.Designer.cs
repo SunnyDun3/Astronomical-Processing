@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Data = new ListBox();
             label1 = new Label();
             SearchButton = new Button();
@@ -38,16 +39,17 @@
             editLabel = new Label();
             button4 = new Button();
             SearchInput = new TextBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            avtext = new TextBox();
+            modetext = new TextBox();
+            rangetext = new TextBox();
+            MidExtText = new TextBox();
             label5 = new Label();
-            button1 = new Button();
+            SequentialSearch = new Button();
             mid_Extreme = new Button();
             mode = new Button();
             Average = new Button();
             Range = new Button();
+            toolTip = new ToolTip(components);
             SuspendLayout();
             // 
             // Data
@@ -145,33 +147,37 @@
             SearchInput.Size = new Size(192, 23);
             SearchInput.TabIndex = 6;
             // 
-            // textBox1
+            // avtext
             // 
-            textBox1.Location = new Point(122, 229);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(62, 23);
-            textBox1.TabIndex = 13;
+            avtext.Location = new Point(122, 229);
+            avtext.Name = "avtext";
+            avtext.Size = new Size(62, 23);
+            avtext.TabIndex = 13;
+            avtext.TextChanged += avtext_TextChanged;
             // 
-            // textBox2
+            // modetext
             // 
-            textBox2.Location = new Point(122, 258);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(62, 23);
-            textBox2.TabIndex = 15;
+            modetext.Location = new Point(122, 258);
+            modetext.Name = "modetext";
+            modetext.Size = new Size(124, 23);
+            modetext.TabIndex = 15;
+            modetext.TextChanged += modetext_TextChanged;
             // 
-            // textBox3
+            // rangetext
             // 
-            textBox3.Location = new Point(122, 287);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(62, 23);
-            textBox3.TabIndex = 17;
+            rangetext.Location = new Point(122, 287);
+            rangetext.Name = "rangetext";
+            rangetext.Size = new Size(62, 23);
+            rangetext.TabIndex = 17;
+            rangetext.TextChanged += rangetext_TextChanged;
             // 
-            // textBox4
+            // MidExtText
             // 
-            textBox4.Location = new Point(122, 202);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(62, 23);
-            textBox4.TabIndex = 19;
+            MidExtText.Location = new Point(122, 202);
+            MidExtText.Name = "MidExtText";
+            MidExtText.Size = new Size(62, 23);
+            MidExtText.TabIndex = 19;
+            MidExtText.TextChanged += MidExtText_TextChanged;
             // 
             // label5
             // 
@@ -181,14 +187,15 @@
             label5.Size = new Size(0, 15);
             label5.TabIndex = 18;
             // 
-            // button1
+            // SequentialSearch
             // 
-            button1.Location = new Point(70, 326);
-            button1.Name = "button1";
-            button1.Size = new Size(141, 23);
-            button1.TabIndex = 20;
-            button1.Text = "Sequential Sort";
-            button1.UseVisualStyleBackColor = true;
+            SequentialSearch.Location = new Point(70, 326);
+            SequentialSearch.Name = "SequentialSearch";
+            SequentialSearch.Size = new Size(141, 23);
+            SequentialSearch.TabIndex = 20;
+            SequentialSearch.Text = "Sequential Sort";
+            SequentialSearch.UseVisualStyleBackColor = true;
+            SequentialSearch.Click += SequentialSearch_Click;
             // 
             // mid_Extreme
             // 
@@ -199,7 +206,7 @@
             mid_Extreme.TabIndex = 21;
             mid_Extreme.Text = "Mid Extreme";
             mid_Extreme.UseVisualStyleBackColor = true;
-            mid_Extreme.Click += this.mid_Extreme_Click;
+            mid_Extreme.Click += mid_Extreme_Click;
             // 
             // mode
             // 
@@ -210,6 +217,7 @@
             mode.TabIndex = 22;
             mode.Text = "Mode";
             mode.UseVisualStyleBackColor = true;
+            mode.Click += mode_Click;
             // 
             // Average
             // 
@@ -220,6 +228,7 @@
             Average.TabIndex = 23;
             Average.Text = "Average";
             Average.UseVisualStyleBackColor = true;
+            Average.Click += Average_Click;
             // 
             // Range
             // 
@@ -230,6 +239,7 @@
             Range.TabIndex = 24;
             Range.Text = "Range";
             Range.UseVisualStyleBackColor = true;
+            Range.Click += Range_Click;
             // 
             // Form1
             // 
@@ -240,12 +250,12 @@
             Controls.Add(Average);
             Controls.Add(mode);
             Controls.Add(mid_Extreme);
-            Controls.Add(button1);
-            Controls.Add(textBox4);
+            Controls.Add(SequentialSearch);
+            Controls.Add(MidExtText);
             Controls.Add(label5);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(rangetext);
+            Controls.Add(modetext);
+            Controls.Add(avtext);
             Controls.Add(button4);
             Controls.Add(textEditValue);
             Controls.Add(editLabel);
@@ -275,15 +285,16 @@
         private Label editLabel;
         private Button button4;
         private TextBox SearchInput;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox avtext;
+        private TextBox modetext;
+        private TextBox rangetext;
+        private TextBox MidExtText;
         private Label label5;
-        private Button button1;
+        private Button SequentialSearch;
         private Button mid_Extreme;
         private Button mode;
         private Button Average;
         private Button Range;
+        private ToolTip toolTip;
     }
 }
